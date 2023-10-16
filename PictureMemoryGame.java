@@ -7,19 +7,17 @@ import java.util.Collections;
 
 public class PictureMemoryGame extends JFrame {
     private ArrayList<String> imagePath;
-
     private ArrayList<String> cardImages;
     private JButton[] cardButtons;
     private int numberOfMatches;
     private int firstCardIndex;
     private int secondCardIndex;
-    private long startTime;
+    private long gameTime;
     private int moveCounter;
     private JLabel moveLabel;
 
     public PictureMemoryGame(int matrixSize) {
-        startTime = System.currentTimeMillis();
-
+        gameTime = System.currentTimeMillis();
         imagePath = new ArrayList<>();
 
         if (matrixSize == 12) {
@@ -130,7 +128,7 @@ public class PictureMemoryGame extends JFrame {
                         numberOfMatches++;
 
                         if (numberOfMatches == imagePath.size() / 2) {
-                            long elapsedTime = System.currentTimeMillis() - startTime;
+                            long elapsedTime = System.currentTimeMillis() - gameTime;
                             JOptionPane.showMessageDialog(null, "Congratulations! You've won!\nElapsed Time: " + (elapsedTime / 1000) + " seconds\nTotal Moves: " + moveCounter);
                             resetGame();
                         }
